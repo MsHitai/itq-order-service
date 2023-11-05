@@ -4,7 +4,7 @@ import com.itqgroup.dto.OrderDto;
 
 import java.util.List;
 
-public interface BusinessService {
+public interface OrderService {
     List<OrderDto> findAllOrders(Integer from, Integer to);
 
     OrderDto findOrderById(Long orderId);

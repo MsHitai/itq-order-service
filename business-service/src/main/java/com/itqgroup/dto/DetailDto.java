@@ -6,20 +6,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class OrderDto {
+@NoArgsConstructor
+@Builder
+public class DetailDto {
 
     private Long id;
     @NotNull
-    private String clientName;
+    private String serialNumber;
     @NotNull
-    private String address;
+    private String name;
     @NotNull
-    private double amount;
-    private LocalDateTime created;
+    private Long quantity;
+    @NotNull
+    private OrderDto order;
 }
+
+

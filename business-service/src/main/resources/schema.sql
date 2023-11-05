@@ -1,5 +1,5 @@
-drop table if exists orders;
 drop table if exists details;
+drop table if exists orders;
 
 create table if not exists orders
 (

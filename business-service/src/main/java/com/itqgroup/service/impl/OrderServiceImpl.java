@@ -6,9 +6,8 @@ import com.itqgroup.dto.TimeDto;
 import com.itqgroup.exception.DataNotFoundException;
 import com.itqgroup.mapper.OrderMapper;
 import com.itqgroup.model.Order;
-import com.itqgroup.repository.DetailRepository;
 import com.itqgroup.repository.OrderRepository;
-import com.itqgroup.service.BusinessService;
+import com.itqgroup.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,11 +18,10 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class BusinessServiceImpl implements BusinessService {
+public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
     private final BusinessClient client;
-    private final DetailRepository detailRepository;
 
     @Override
     public List<OrderDto> findAllOrders(Integer from, Integer to) {

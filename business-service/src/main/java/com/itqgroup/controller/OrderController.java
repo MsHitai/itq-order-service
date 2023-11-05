@@ -1,7 +1,7 @@
 package com.itqgroup.controller;
 
 import com.itqgroup.dto.OrderDto;
-import com.itqgroup.service.BusinessService;
+import com.itqgroup.service.OrderService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -14,13 +14,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/orders")
 @Slf4j
-public class BusinessController {
+public class OrderController {
 
-    private final BusinessService businessService;
+    private final OrderService orderService;
 
     @Autowired
-    public BusinessController(BusinessService businessService) {
-        this.businessService = businessService;
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
     }
 
     /**
@@ -34,7 +34,7 @@ public class BusinessController {
     public List<OrderDto> findAllOrders(@PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
                                         @Positive @RequestParam(defaultValue = "10") Integer to) {
         log.info("Received GET request to fetch all orders from {} offset to {} limit", from, to);
-        return businessService.findAllOrders(from, to);
+        return orderService.findAllOrders(from, to);
     }
 
     /**
@@ -46,7 +46,7 @@ public class BusinessController {
     @GetMapping("/{orderId}")
     public OrderDto findOrderById(@PathVariable(name = "orderId") Long orderId) {
         log.info("Received GET request to find order by id {}", orderId);
-        return businessService.findOrderById(orderId);
+        return orderService.findOrderById(orderId);
     }
 
     /**
@@ -58,7 +58,6 @@ public class BusinessController {
     @PostMapping
     public OrderDto addOrder(@Valid @RequestBody OrderDto dto) {
         log.info("Received POST request to add an order {}", dto.toString());
-        return businessService.addOrder(dto
-        );
+        return orderService.addOrder(dto);
     }
 }
